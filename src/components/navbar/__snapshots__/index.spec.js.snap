@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Component] Navbar renders as expected 1`] = `
+<Navbar
+  className="bg-primary"
+  dark={true}
+  expand="lg"
+  tag="nav"
+>
+  <Container
+    tag="div"
+  >
+    <NavbarBrand
+      tag={[Function]}
+      to="/"
+    >
+      test
+    </NavbarBrand>
+    <NavbarToggler
+      onClick={[Function]}
+      tag="button"
+      type="button"
+    />
+    <Collapse
+      appear={false}
+      enter={true}
+      exit={true}
+      in={false}
+      isOpen={false}
+      mountOnEnter={false}
+      navbar={true}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      tag="div"
+      timeout={350}
+      unmountOnExit={false}
+    >
+      <Nav
+        className="ml-auto"
+        navbar={true}
+        tag="ul"
+        vertical={false}
+      >
+        <NavItem
+          tag="li"
+        >
+          <GatsbyLink
+            className="nav-link"
+            to="/about"
+          >
+            About
+          </GatsbyLink>
+        </NavItem>
+      </Nav>
+    </Collapse>
+  </Container>
+</Navbar>
+`;

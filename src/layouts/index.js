@@ -1,51 +1,36 @@
 import React from 'react';
-import { Container } from 'reactstrap';
 import graphql from 'graphql';
-import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import { Container } from 'reactstrap';
+import Navbar from '../components/navbar';
 
+// Import Sass entry point. This is handled by Webpack, thanks to the Gatsby
+// Sass plugin.
 import '../styles/index.scss';
 
-const TemplateWrapper = ({ children, data }) => {
-  let user;
-
-  if (typeof window !== 'undefined') {
-    user = window.netlifyIdentity && window.netlifyIdentity.currentUser();
-  }
+// Main layout component. All page components are rendered as children of an
+// instance of this.
+const Layout = ({ children, data }) => {
+  const siteTitle = data.site.metadata.title;
 
   return (
-    <div className="App">
-      <Helmet title={data.site.siteMetadata.title} />
-      <div className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <Container>
-          <Link to="/" className="navbar-brand">{data.site.siteMetadata.title}</Link>
-          <ul className="nav navbar-nav">
-
-            {user && (
-              <li className="nav-item">
-                <a href="/admin" className="nav-link">Admin</a>
-              </li>
-            )}
-
-            <li className="nav-item">
-              <Link to="/about" className="nav-link">About</Link>
-            </li>
-          </ul>
-        </Container>
-      </div>
-      <div className="pageContent">{children()}</div>
+    <div className="app">
+      <Helmet title={siteTitle} />
+      <Navbar title={siteTitle} />
+      <Container>{children()}</Container>
     </div>
   );
 };
 
-export const pageQuery = graphql`
+export default Layout;
+
+// Query for data associated with this layout.
+export const query = graphql`
   query LayoutIndexQuery {
     site {
-      siteMetadata {
+      metadata: siteMetadata {
         title
       }
     }
   }
 `;
-
-export default TemplateWrapper;

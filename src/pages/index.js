@@ -1,62 +1,18 @@
 import React from 'react';
 import Link from 'gatsby-link';
-import graphql from 'graphql';
-import {
-  Container,
-  Card,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-} from 'reactstrap';
 
-const IndexPage = ({ data }) => (
-  <Container>
-    {data.posts.edges.map(({ node: post }) => (
-      <Card style={{ marginBottom: 10 }} key={post.id}>
-        <CardBody>
-          <CardTitle><Link to={post.frontmatter.path}>{post.frontmatter.title}</Link></CardTitle>
-          <CardSubtitle style={{ marginBottom: 10 }}>{post.frontmatter.date}</CardSubtitle>
-          <CardText>{post.excerpt}</CardText>
-        </CardBody>
-      </Card>
-  ))}
-  </Container>
+const IndexPage = () => (
+  <React.Fragment>
+    <h1>Hello world!</h1>
+    <p>
+      Welcome to your new basic Gatsby site, scaffolded by the orangejellyfish
+      Gatsby base starter kit.
+    </p>
+    <p>
+      You can follow this link to the <Link to="/about">about page</Link> to see
+      the single page app in action.
+    </p>
+  </React.Fragment>
 );
 
 export default IndexPage;
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    posts: allMarkdownRemark(
-      filter: {
-        frontmatter: {
-          contentType: {
-            eq: "blog"
-          },
-          hidden: {
-            ne: true
-          }
-        }
-      },
-      sort: {
-        fields: [frontmatter___date]
-        order: DESC,
-      }
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          frontmatter {
-            title
-            contentType
-            date(formatString: "MMMM DD, YYYY")
-            path
-            hidden
-          }
-        }
-      }
-    }
-  }
-`;
