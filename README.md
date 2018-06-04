@@ -1,4 +1,4 @@
-# gatsby-starter-base
+# gatsby-starter-netlify-cms
 
 A basic starter kit for [Gatsby][gatsby] following [orangejellyfish][oj]
 JavaScript best practices. This kit is intended for the development of simple
@@ -11,12 +11,13 @@ might better suit your needs:
 - Bootstrap 4 support via [reactstrap][rs]
 - Unit testing with [Jest][jest] and [Enzyme][enz]
 - Global styling with [Sass][sass]
+- [Netlify CMS][ncms] support
 
-If you have more complex requirements one of our alternative kits, built upon
-this base, might better suit your needs:
+If you have more or less complex requirements one of our alternative kits, built
+upon the same base, might better suit your needs:
 
-- [gatsby-starter-netlify-cms][gsnc] adds in support for editing site content
-  in Netlify CMS.
+- [gatsby-starter-base][gsbase] removes Netlify CMS support and is designed as a
+  barebones static site generator.
 
 - [gatsby-starter-blog][gsb] builds upon the Netlify CMS starter to include a
   blogging framework.
@@ -44,6 +45,16 @@ overhead associated with such flexibility we favour the following conventions:
 - A "page" is viewed as an individual web page. A page is represented as a
   React component exported from a file in the `src/pages` directory.
 
+- Content may be placed inline within a page if it is not required to be
+  editable via the CMS.
+
+- Editable content is placed in a Markdown file in the `src/content` directory.
+
+- The directory structures of the `src/pages` and `src/content` directories are
+  used to map content to pages. This avoids the need to configure the
+  relationship manually. The content for `src/pages/about/index.js` is expected
+  to be found in `src/content/about/index.md`.
+
 - Simple components (those that are not pages or layouts and generally receive
   data as props from ancestor components that pull in data from GraphQL) are
   placed in the `src/components` directory.
@@ -55,7 +66,8 @@ overhead associated with such flexibility we favour the following conventions:
 [jest]: https://facebook.github.io/jest/
 [enz]: https://github.com/airbnb/enzyme
 [sass]: https://sass-lang.com/
-[gsnc]: https://github.com/orangejellyfish/gatsby-starter-netlify-cms
+[ncms]: https://www.netlifycms.org/
+[gsbase]: https://github.com/orangejellyfish/gatsby-starter-base
 [gsb]: https://github.com/orangejellyfish/gatsby-starter-blog
 [ncms]: https://www.netlifycms.org/
 [npx]: https://www.npmjs.com/package/npx
