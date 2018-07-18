@@ -11,7 +11,7 @@ import '../styles/index.scss';
 // Main layout component. All page components are rendered as children of an
 // instance of this.
 const Layout = ({ children, data }) => {
-  const siteTitle = data.site.metadata.title;
+  const siteTitle = data.site.config.title;
 
   return (
     <div className="app">
@@ -28,9 +28,7 @@ export default Layout;
 export const query = graphql`
   query LayoutIndexQuery {
     site {
-      metadata: siteMetadata {
-        title
-      }
+      ...ConfigSiteTitle
     }
   }
 `;
